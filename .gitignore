@@ -1,0 +1,17 @@
+# Audio files
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.m4a
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tgz
+
+# OS
+Thumbs.db
+.DS_Store
