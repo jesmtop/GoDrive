@@ -52,9 +52,6 @@
       'imagenfondo/1.jpg',
       'imagenfondo/2.jpg',
       'imagenfondo/3.jpg',
-      'imagenfondo/4.jpg',
-      'imagenfondo/5.jpg',
-      'imagenfondo/6.jpg',
     ];
 
     // Preload all images
@@ -70,7 +67,7 @@
     setInterval(function () {
       idx = (idx + 1) % images.length;
       track.style.backgroundImage = 'url(' + images[idx] + ')';
-    }, 3000);
+    }, 7000);
   })();
 
 })();
