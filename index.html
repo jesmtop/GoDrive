@@ -10,15 +10,13 @@
   <meta name="author" content="GoDrive Taxi" />
   <link rel="canonical" href="https://jesmtop.github.io/GoDrive/" />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jesmtop.github.io/GoDrive/" />
   <meta property="og:title" content="GoDrive Taxi — Tu Destino, Nuestra Prioridad" />
   <meta property="og:description" content="Viaja cómodo, seguro y siempre a tiempo. Servicio de taxi en Carúpano, Sucre. Disponibles 24/7." />
   <meta property="og:site_name" content="GoDrive Taxi" />
   <meta property="og:locale" content="es_ES" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="GoDrive Taxi — Tu Destino, Nuestra Prioridad" />
   <meta name="twitter:description" content="Viaja cómodo, seguro y siempre a tiempo. Servicio de taxi en Carúpano, Sucre." />
@@ -26,575 +24,461 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <!-- Font Awesome 6 Free -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-  <!-- Tailwind CSS (utility layer only) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            body: ['Sora', 'system-ui', 'sans-serif'],
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
           colors: {
-            go: { black: '#0A0A0A', card: '#181818', green: '#39FF14', 'green-dim': '#25D366' },
+            go: {
+              black: '#050505',
+              darker: '#0A0A0A',
+              card: '#111111',
+              'card-border': 'rgba(255,255,255,0.04)',
+              green: '#39FF14',
+              'green-dim': '#25D366',
+            },
           },
-          maxWidth: { phone: '440px' },
         },
       },
     };
   </script>
 
   <style>
-    /* ============================================================
-       CSS CUSTOM PROPERTIES
-       ============================================================ */
+    /* ===================== CSS VARIABLES ===================== */
     :root {
-      --bg-main: #0A0A0A;
-      --bg-card: #181818;
-      --bg-card-hover: #1f1f1f;
-      --border-subtle: #2a2a2a;
-      --green-neon: #39FF14;
-      --green-whatsapp: #25D366;
-      --text-primary: #FFFFFF;
-      --text-secondary: #9CA3AF;
-      --radius-card: 16px;
-      --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-      --transition-smooth: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      --bg: #050505;
+      --bg-alt: #0A0A0A;
+      --card-bg: #111111;
+      --card-border: rgba(255, 255, 255, 0.05);
+      --green: #39FF14;
+      --green-glow: rgba(57, 255, 20, 0.12);
+      --whatsapp: #25D366;
+      --text: #FFFFFF;
+      --text-muted: #777;
+      --radius: 18px;
+      --radius-sm: 14px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* ============================================================
-       RESET / BASE
-       ============================================================ */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    /* ===================== RESET ===================== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Sora', system-ui, sans-serif;
-      background: var(--bg-main);
-      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+
+    /* ===================== NOISE OVERLAY ===================== */
+    .noise {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 180px 180px;
     }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-main);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 4px;
-    }
-
-    /* ============================================================
-       NOISE / GRAIN OVERLAY
-       ============================================================ */
-    .noise-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 180px 180px;
-    }
-
-    /* ============================================================
-       APP CONTAINER
-       ============================================================ */
+    /* ===================== APP CONTAINER ===================== */
     .app {
       position: relative;
       width: 100%;
       max-width: 440px;
-      padding: 24px 20px 32px;
-      animation: appFadeIn 0.8s ease-out forwards;
+      padding: 20px 20px 28px;
+      opacity: 0;
+      animation: appIn 0.9s var(--ease) forwards;
+    }
+    @keyframes appIn {
+      from { opacity: 0; transform: scale(0.97) translateY(10px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    @keyframes appFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* On desktop: center container with subtle radial glow behind */
+    /* Desktop styles */
     @media (min-width: 768px) {
       body {
         background:
-          radial-gradient(ellipse 600px 400px at 50% 240px, rgba(57, 255, 20, 0.035) 0%, transparent 70%),
-          var(--bg-main);
-        align-items: flex-start;
-        padding-top: 40px;
-        padding-bottom: 40px;
+          radial-gradient(ellipse 800px 500px at 50% 200px, rgba(57, 255, 20, 0.025) 0%, transparent 70%),
+          var(--bg);
+        align-items: flex-start; padding-top: 50px; padding-bottom: 50px;
       }
-
       .app {
-        background: var(--bg-main);
-        border: 1px solid rgba(255, 255, 255, 0.04);
-        border-radius: 32px;
-        box-shadow:
-          0 0 0 1px rgba(57, 255, 20, 0.06),
-          0 20px 60px rgba(0, 0, 0, 0.6);
+        background: var(--bg-alt);
+        border: 1px solid rgba(255,255,255,0.03);
+        border-radius: 36px;
+        box-shadow: 0 0 0 1px rgba(57,255,20,0.04), 0 30px 80px rgba(0,0,0,0.6);
         padding: 32px 28px 36px;
       }
     }
 
-    /* ============================================================
-       TEXT UTILITIES
-       ============================================================ */
-    .font-display { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .font-body    { font-family: 'Sora', system-ui, sans-serif; }
+    /* ===================== AMBIENT GLOW ===================== */
+    .ambient-glow {
+      position: absolute;
+      top: -20%; left: -30%;
+      width: 160%; height: 60%;
+      background: radial-gradient(ellipse at 50% 60%, rgba(57,255,20,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-    /* ============================================================
-       HERO
-       ============================================================ */
+    /* ===================== STAGGER ENTRANCE ===================== */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.7s var(--ease) forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.28s; }
+    .fade-up:nth-child(4) { animation-delay: 0.40s; }
+    .fade-up:nth-child(5) { animation-delay: 0.52s; }
+    .fade-up:nth-child(6) { animation-delay: 0.62s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ===================== LOGO ===================== */
+    .logo-container {
+      display: flex; justify-content: center; margin-bottom: 18px;
+      position: relative; z-index: 1;
+    }
+    .logo-img {
+      height: 56px;
+      width: auto;
+      filter: drop-shadow(0 0 20px rgba(57,255,20,0.08));
+      object-fit: contain;
+      transition: filter 0.5s var(--ease);
+    }
+    .logo-img:hover { filter: drop-shadow(0 0 30px rgba(57,255,20,0.15)); }
+
+    /* ===================== HERO ===================== */
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 100px;
-      padding: 4px 12px;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 100px; padding: 5px 14px; white-space: nowrap;
+      backdrop-filter: blur(4px);
     }
-
-    .hero-badge i {
-      font-size: 0.65rem;
-      color: var(--green-neon);
-    }
+    .hero-badge i { font-size: 0.6rem; color: var(--green); }
 
     .hero-title {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Outfit', system-ui, sans-serif;
       font-weight: 800;
-      font-size: clamp(1.75rem, 7vw, 2.4rem);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
     }
-
     .hero-title .accent {
-      color: var(--green-neon);
-      text-shadow: 0 0 40px rgba(57, 255, 20, 0.15);
+      background: linear-gradient(135deg, #39FF14 0%, #7FFF00 50%, #39FF14 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
     .hero-sub {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+      font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;
+      font-weight: 400; margin: 0 0 4px;
     }
 
-    /* Staggered entrance for hero children */
-    .hero-fade-in {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroFadeIn 0.6s ease-out forwards;
-    }
-
-    .hero-fade-in:nth-child(1) { animation-delay: 0.10s; }
-    .hero-fade-in:nth-child(2) { animation-delay: 0.25s; }
-    .hero-fade-in:nth-child(3) { animation-delay: 0.40s; }
-    .hero-fade-in:nth-child(4) { animation-delay: 0.55s; }
-
-    @keyframes heroFadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ============================================================
-       CAR ILLUSTRATION
-       ============================================================ */
-    .car-wrapper {
+    /* ===================== CAR VISUAL ===================== */
+    .car-section {
       position: relative;
-      display: flex;
-      justify-content: center;
-      margin: 0 -10px 8px;
+      margin: 0 -12px 4px;
+      display: flex; justify-content: center;
     }
-
     .car-silhouette {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      animation: carFloat 4s ease-in-out infinite;
+      width: 100%; max-width: 420px; height: auto;
       display: block;
+      animation: carFloat 3.5s ease-in-out infinite;
+      position: relative; z-index: 1;
     }
-
     @keyframes carFloat {
       0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
+      50%      { transform: translateY(-5px); }
     }
 
+    /* Car underglow with neon spread */
     .car-glow {
       position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      height: 20px;
-      background: radial-gradient(ellipse, rgba(57, 255, 20, 0.25) 0%, transparent 70%);
+      bottom: 2px; left: 50%; transform: translateX(-50%);
+      width: 65%; height: 24px;
+      background: radial-gradient(ellipse, rgba(57,255,20,0.2) 0%, rgba(57,255,20,0.05) 40%, transparent 70%);
       border-radius: 50%;
-      filter: blur(12px);
+      filter: blur(14px);
       pointer-events: none;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; transform: translateX(-50%) scaleX(1); }
+      50%      { opacity: 1; transform: translateX(-50%) scaleX(1.08); }
     }
 
-    /* ============================================================
-       ACTION CARDS
-       ============================================================ */
+    /* ===================== DIVIDER ===================== */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 8px 0 20px;
+    }
+    .divider-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(57,255,20,0.15), transparent);
+    }
+    .divider-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--green);
+      opacity: 0.3;
+      flex-shrink: 0;
+    }
+
+    /* ===================== ACTION CARDS ===================== */
+    .card-list { display: flex; flex-direction: column; gap: 10px; }
+
     .action-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 18px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-card);
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
       cursor: pointer;
-      transition:
-        background var(--transition-smooth),
-        border-color var(--transition-smooth),
-        transform var(--transition-smooth),
-        box-shadow var(--transition-smooth);
-      text-decoration: none;
-      color: var(--text-primary);
+      text-decoration: none; color: var(--text);
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: cardFadeIn 0.5s ease-out forwards;
+      transition:
+        background 0.4s var(--ease),
+        border-color 0.4s var(--ease),
+        transform 0.4s var(--ease),
+        box-shadow 0.4s var(--ease);
+      opacity: 0; transform: translateY(16px);
+      animation: cardIn 0.5s var(--ease) forwards;
     }
-
-    @keyframes cardFadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .action-card:nth-child(1) { animation-delay: 0.10s; }
     .action-card:nth-child(2) { animation-delay: 0.18s; }
     .action-card:nth-child(3) { animation-delay: 0.26s; }
     .action-card:nth-child(4) { animation-delay: 0.34s; }
     .action-card:nth-child(5) { animation-delay: 0.42s; }
 
-    /* Glow border overlay (hidden by default) */
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* Card glass highlight overlay */
     .action-card::before {
       content: '';
-      position: absolute;
-      inset: -1px;
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(57,255,20,0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Card neon border glow on hover */
+    .action-card::after {
+      content: '';
+      position: absolute; inset: -1px;
       border-radius: inherit;
-      border: 1px solid transparent;
-      background: linear-gradient(135deg, rgba(57, 255, 20, 0.3), transparent 50%, rgba(57, 255, 20, 0.08));
+      background: linear-gradient(135deg, rgba(57,255,20,0.25), transparent 40%, rgba(57,255,20,0.05));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       opacity: 0;
-      transition: opacity var(--transition-smooth);
+      transition: opacity 0.4s var(--ease);
       pointer-events: none;
     }
 
     .action-card:hover,
     .action-card:focus-visible {
-      background: var(--bg-card-hover);
-      border-color: rgba(57, 255, 20, 0.2);
-      transform: translateY(-2px) scale(1.005);
-      box-shadow: 0 8px 32px rgba(57, 255, 20, 0.08);
+      background: #161616;
+      border-color: rgba(57,255,20,0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(57,255,20,0.04);
     }
+    .action-card:hover::after { opacity: 1; }
+    .action-card:active { transform: translateY(0) scale(0.99); }
 
-    .action-card:hover::before {
-      opacity: 1;
-    }
-
-    .action-card:active {
-      transform: translateY(0) scale(0.99);
-    }
-
-    /* Icon circle */
+    /* Card icon */
     .card-icon {
       flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 12px;
-      background: rgba(57, 255, 20, 0.08);
-      color: var(--green-neon);
-      font-size: 1.15rem;
-      transition: background var(--transition-smooth);
+      background: rgba(57,255,20,0.06);
+      color: var(--green);
+      font-size: 1.1rem;
+      transition: background 0.4s var(--ease), transform 0.4s var(--ease);
+      position: relative; z-index: 1;
     }
+    .action-card:hover .card-icon { background: rgba(57,255,20,0.1); transform: scale(1.05); }
 
-    .action-card:hover .card-icon {
-      background: rgba(57, 255, 20, 0.14);
-    }
+    .card-icon.is-whatsapp { background: rgba(37,211,102,0.1); color: var(--whatsapp); }
+    .action-card:hover .card-icon.is-whatsapp { background: rgba(37,211,102,0.15); }
+    .card-icon.is-instagram { background: rgba(225,48,108,0.1); color: #E1306C; }
+    .action-card:hover .card-icon.is-instagram { background: rgba(225,48,108,0.16); }
+    .card-icon.is-tiktok { background: rgba(255,0,80,0.08); color: #FF0050; }
+    .action-card:hover .card-icon.is-tiktok { background: rgba(255,0,80,0.14); }
 
-    /* WhatsApp icon special color */
-    .card-icon.is-whatsapp {
-      background: rgba(37, 211, 102, 0.12);
-      color: var(--green-whatsapp);
-    }
-    .action-card:hover .card-icon.is-whatsapp {
-      background: rgba(37, 211, 102, 0.2);
-    }
-
-    /* Instagram & TikTok brand colors */
-    .card-icon.is-instagram {
-      background: rgba(225, 48, 108, 0.12);
-      color: #E1306C;
-    }
-    .action-card:hover .card-icon.is-instagram {
-      background: rgba(225, 48, 108, 0.2);
-    }
-
-    .card-icon.is-tiktok {
-      background: rgba(255, 0, 80, 0.1);
-      color: #FF0050;
-    }
-    .action-card:hover .card-icon.is-tiktok {
-      background: rgba(255, 0, 80, 0.18);
-    }
-
-    /* Card text */
     .card-title {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      line-height: 1.3;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 700; font-size: 0.95rem; line-height: 1.3;
+      position: relative; z-index: 1;
     }
-
     .card-sub {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
+      font-size: 0.74rem; color: var(--text-muted); line-height: 1.4;
+      position: relative; z-index: 1;
     }
-
-    /* Card arrow */
     .card-arrow {
-      margin-left: auto;
-      flex-shrink: 0;
-      color: #555;
-      font-size: 0.85rem;
-      transition:
-        transform var(--transition-smooth),
-        color var(--transition-smooth);
+      margin-left: auto; flex-shrink: 0;
+      color: #444; font-size: 0.8rem;
+      transition: transform 0.4s var(--ease), color 0.4s var(--ease);
+      position: relative; z-index: 1;
     }
-
     .action-card:hover .card-arrow {
-      transform: translateX(4px);
-      color: var(--green-neon);
+      transform: translateX(5px);
+      color: var(--green);
     }
 
-    /* ============================================================
-       QR SECTION
-       ============================================================ */
+    /* ===================== QR SECTION ===================== */
     .qr-section {
-      border: 1px solid rgba(57, 255, 20, 0.15);
+      position: relative;
       border-radius: 20px;
       padding: 24px 20px;
-      background: rgba(57, 255, 20, 0.02);
-      position: relative;
-      animation: borderPulse 3s ease-in-out infinite;
       text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(57,255,20,0.02) 0%, transparent 50%);
+      border: 1px solid rgba(57,255,20,0.08);
+      margin-top: 24px;
+    }
+    /* Pulsing border */
+    .qr-section::before {
+      content: '';
+      position: absolute; inset: -1px;
+      border-radius: inherit;
+      border: 1px solid rgba(57,255,20,0.15);
+      animation: qrBorderPulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes qrBorderPulse {
+      0%, 100% { opacity: 0.3; }
+      50%      { opacity: 1; }
     }
 
-    @keyframes borderPulse {
-      0%, 100% { border-color: rgba(57, 255, 20, 0.15); }
-      50%      { border-color: rgba(57, 255, 20, 0.35); }
-    }
-
-    /* QR visual */
     .qr-visual {
       position: relative;
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 16px;
+      width: 130px; height: 130px;
+      margin: 0 auto 14px;
       border-radius: 16px;
       overflow: hidden;
       background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 30px rgba(57, 255, 20, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(57,255,20,0.04);
     }
+    .qr-visual svg { display: block; width: 100%; height: 100%; }
 
-    .qr-visual svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* WhatsApp icon in center of QR */
-    .qr-whatsapp-center {
+    .qr-center-icon {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 36px;
-      height: 36px;
-      background: var(--green-whatsapp);
+      width: 32px; height: 32px;
+      background: var(--whatsapp);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1rem;
       border: 3px solid #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
-
     .qr-text {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      font-weight: 500;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;
+      font-weight: 500; position: relative; z-index: 1;
+      margin: 0;
     }
+    .qr-text strong { color: var(--green); font-weight: 600; }
 
-    .qr-text strong {
-      color: var(--green-neon);
-      font-weight: 600;
-    }
-
-    /* ============================================================
-       TRUST FOOTER
-       ============================================================ */
+    /* ===================== TRUST FOOTER ===================== */
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
+      margin-top: 28px;
     }
-
     .trust-item {
       text-align: center;
-      padding: 16px 8px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      transition:
-        background var(--transition-smooth),
-        border-color var(--transition-smooth),
-        transform var(--transition-smooth);
+      padding: 16px 8px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease);
     }
-
     .trust-item:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(57, 255, 20, 0.08);
+      background: rgba(255,255,255,0.025);
+      border-color: rgba(57,255,20,0.04);
       transform: translateY(-1px);
     }
-
     .trust-icon {
-      font-size: 1.4rem;
-      color: var(--green-neon);
-      margin-bottom: 8px;
-      display: block;
-      opacity: 0.7;
+      font-size: 1.3rem;
+      color: var(--green); opacity: 0.6;
+      display: block; margin-bottom: 6px;
     }
-
     .trust-label {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      font-weight: 700;
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      color: var(--text-primary);
-      line-height: 1.3;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 700; font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      line-height: 1.3; margin-bottom: 2px;
     }
-
     .trust-desc {
-      font-size: 0.6rem;
-      color: var(--text-secondary);
-      line-height: 1.3;
-      margin-top: 2px;
+      font-size: 0.55rem; color: var(--text-muted); line-height: 1.3;
     }
-
     .copyright {
-      font-size: 0.7rem;
-      color: #444;
-      text-align: center;
-      letter-spacing: 0.02em;
+      font-size: 0.65rem; color: #333;
+      text-align: center; margin-top: 20px;
+      letter-spacing: 0.03em;
     }
 
-    /* ============================================================
-       SCROLL REVEAL (Intersection Observer fallback)
-       ============================================================ */
+    /* ===================== SCROLL REVEAL ===================== */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition:
-        opacity 0.6s ease-out,
-        transform 0.6s ease-out;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Subtle divider */
-    .section-divider {
-      width: 40px;
-      height: 2px;
-      background: rgba(57, 255, 20, 0.2);
-      border-radius: 2px;
-      margin: 0 auto;
-    }
-
-    /* ============================================================
-       RESPONSIVE TWEAKS
-       ============================================================ */
+    /* ===================== RESPONSIVE ===================== */
     @media (max-width: 380px) {
-      .app { padding: 16px 14px 24px; }
-      .action-card { padding: 14px 14px; gap: 12px; }
-      .card-icon { width: 38px; height: 38px; font-size: 1rem; }
+      .app { padding: 16px 14px 20px; }
+      .action-card { padding: 12px 14px; gap: 12px; }
+      .card-icon { width: 36px; height: 36px; font-size: 0.95rem; }
       .hero-title { font-size: 1.55rem; }
+      .logo-img { height: 46px; }
     }
-
     @media (min-width: 1024px) {
       .app { max-width: 460px; padding: 40px 32px 40px; }
     }
-
-    /* Active state for touch devices */
     @media (hover: none) {
-      .action-card:active {
-        background: var(--bg-card-hover);
-        transform: scale(0.98);
-      }
+      .action-card:active { background: #161616; transform: scale(0.98); }
+      .action-card:hover::after { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .car-silhouette { animation: none !important; }
+      .car-glow { animation: none !important; }
+      .qr-section::before { animation: none !important; }
     }
 
-    /* Reduced motion preference */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      .car-silhouette { animation: none !important; }
-      .qr-section { animation: none !important; }
-    }
+    /* ===================== JSON-LD ===================== */
   </style>
 
-  <!-- Schema.org structured data for Google -->
+  <!-- Schema.org structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -603,10 +487,7 @@
     "description": "Servicio de taxi en Carúpano, Sucre. Viaja cómodo, seguro y siempre a tiempo.",
     "url": "https://jesmtop.github.io/GoDrive/",
     "telephone": "+58-416-123-4567",
-    "areaServed": {
-      "@type": "City",
-      "name": "Carúpano"
-    },
+    "areaServed": { "@type": "City", "name": "Carúpano" },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Carúpano",
@@ -616,177 +497,172 @@
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+      "opens": "00:00", "closes": "23:59"
     },
-    "sameAs": [
-      "https://instagram.com/godrive.taxi",
-      "https://tiktok.com/@godrive.taxi"
-    ]
+    "sameAs": ["https://instagram.com/godrive.taxi","https://tiktok.com/@godrive.taxi"]
   }
   </script>
 </head>
 <body>
 
-  <!-- Grain texture overlay -->
-  <div class="noise-overlay" aria-hidden="true"></div>
+  <!-- Noise overlay -->
+  <div class="noise" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       MAIN APP
-       ============================================================ -->
+  <!-- ==================== APP ==================== -->
   <main class="app" role="main">
 
-    <!-- ============================================================
-         HERO
-         ============================================================ -->
-    <header class="hero-fade-in" style="text-align:center; margin-bottom:8px;">
-      <!-- Logo wordmark -->
-      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:16px;">
-        <span style="display:flex; align-items:center; gap:8px; font-family:'Plus Jakarta Sans',system-ui; font-weight:800; font-size:1.4rem; letter-spacing:-0.02em;">
-          <i class="fa-solid fa-car-side" style="color:var(--green-neon); font-size:1.1rem;"></i>
-          GoDrive
-          <span style="font-weight:500; font-size:0.65rem; color:var(--text-secondary); background:rgba(57,255,20,0.08); padding:2px 10px; border-radius:100px; letter-spacing:0.04em;">TAXI</span>
-        </span>
-      </div>
+    <!-- Ambient background glow -->
+    <div class="ambient-glow" aria-hidden="true"></div>
 
+    <!-- ==================== LOGO ==================== -->
+    <div class="logo-container fade-up">
+      <img
+        src="logo/logogodrive.png"
+        alt="GoDrive Taxi"
+        class="logo-img"
+        width="180"
+        height="56"
+        loading="eager"
+      />
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <header style="text-align:center; position:relative; z-index:1;">
       <!-- Badges -->
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:20px;">
+      <div class="fade-up" style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:18px;">
         <span class="hero-badge"><i class="fa-solid fa-location-dot"></i> Carúpano, Sucre</span>
         <span class="hero-badge"><i class="fa-solid fa-clock"></i> Servicio 24/7</span>
       </div>
-    </header>
 
-    <!-- Hero content -->
-    <div style="text-align:center; margin-bottom:6px;">
-      <h1 class="hero-title hero-fade-in" style="margin:0 0 14px;">
+      <!-- Headline -->
+      <h1 class="hero-title fade-up">
         TU DESTINO,<br />
         <span class="accent">NUESTRA PRIORIDAD</span>
       </h1>
-      <p class="hero-sub hero-fade-in" style="margin:0 0 0;">
-        Viaja cómodo, seguro y siempre a tiempo.
-      </p>
-    </div>
+      <p class="hero-sub fade-up">Viaja cómodo, seguro y siempre a tiempo.</p>
+    </header>
 
-    <!-- Car illustration -->
-    <div class="car-wrapper hero-fade-in" aria-hidden="true">
+    <!-- ==================== CAR VISUAL ==================== -->
+    <div class="car-section fade-up">
       <svg
         class="car-silhouette"
-        viewBox="0 0 500 220"
+        viewBox="0 0 520 230"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
         <defs>
-          <linearGradient id="carBodyGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%"   stop-color="#1A1A1A" />
-            <stop offset="50%"  stop-color="#222" />
-            <stop offset="100%" stop-color="#181818" />
+          <!-- Gradients for car body -->
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#1c1c1c" />
+            <stop offset="40%"  stop-color="#181818" />
+            <stop offset="100%" stop-color="#0f0f0f" />
           </linearGradient>
-          <linearGradient id="carGlowLine" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="cabinGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#151515" />
+            <stop offset="100%" stop-color="#0a0a0a" />
+          </linearGradient>
+          <linearGradient id="greenLine" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%"   stop-color="transparent" />
-            <stop offset="30%"  stop-color="#39FF14" stop-opacity="0.6" />
-            <stop offset="70%"  stop-color="#39FF14" stop-opacity="0.6" />
+            <stop offset="25%"  stop-color="#39FF14" stop-opacity="0.35" />
+            <stop offset="50%"  stop-color="#39FF14" stop-opacity="0.6" />
+            <stop offset="75%"  stop-color="#39FF14" stop-opacity="0.35" />
             <stop offset="100%" stop-color="transparent" />
           </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="wheelShadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5" />
+          </filter>
         </defs>
 
         <!-- Green underglow -->
-        <ellipse cx="250" cy="195" rx="160" ry="12" fill="#39FF14" opacity="0.08" />
+        <ellipse cx="260" cy="190" rx="180" ry="14" fill="#39FF14" opacity="0.06" />
+
+        <!-- Rear diffuser glow (green accent underneath) -->
+        <path d="M 370 180 L 430 180 L 420 172 L 380 172 Z" fill="#39FF14" opacity="0.04" filter="url(#glow)" />
 
         <!-- Main body -->
         <path
-          d="
-            M 75 170
-            L 58 145
-            Q 48 128, 65 112
-            L 110 72
-            Q 130 48, 162 44
-            L 350 44
-            Q 380 44, 398 62
-            L 445 112
-            Q 460 128, 452 148
-            L 435 170
-            Z
-          "
-          fill="url(#carBodyGrad)"
-          stroke="#2a2a2a"
+          d="M 75 175 L 58 148 Q 48 130 65 115 L 115 72 Q 135 48 168 44 L 360 44 Q 392 44 412 62 L 460 115 Q 475 130 466 150 L 448 175 Z"
+          fill="url(#bodyGrad)"
+          stroke="#222"
           stroke-width="1"
         />
 
-        <!-- Cabin / roof area -->
+        <!-- Cabin section -->
         <path
-          d="
-            M 162 44
-            L 178 18
-            Q 192 6, 218 4
-            L 350 4
-            Q 375 6, 385 18
-            L 393 44
-            Z
-          "
-          fill="#151515"
-          stroke="#2a2a2a"
+          d="M 168 44 L 184 18 Q 196 6 222 4 L 358 4 Q 384 6 395 18 L 404 44 Z"
+          fill="url(#cabinGrad)"
+          stroke="#222"
           stroke-width="1"
         />
 
-        <!-- Front windshield -->
-        <path
-          d="M 182 38 L 198 16 Q 208 10, 226 8 L 280 8 L 280 38 Z"
-          fill="#0D0D0D"
-        />
+        <!-- Windshield -->
+        <path d="M 188 38 L 202 16 Q 212 10 230 8 L 290 8 L 290 38 Z" fill="#0A0A0A" />
+        <path d="M 188 38 L 202 16 Q 212 10 230 8 L 290 8 L 290 38 Z" fill="url(#greenLine)" opacity="0.15" />
 
-        <!-- Rear window area -->
-        <path
-          d="M 284 38 L 284 8 L 340 8 Q 362 10, 370 16 L 384 38 Z"
-          fill="#0D0D0D"
-        />
+        <!-- Rear window -->
+        <path d="M 296 38 L 296 8 L 352 8 Q 372 10 382 16 L 396 38 Z" fill="#0A0A0A" />
+        <path d="M 296 38 L 296 8 L 352 8 Q 372 10 382 16 L 396 38 Z" fill="url(#greenLine)" opacity="0.1" />
 
         <!-- B-pillar -->
-        <rect x="278" y="6" width="6" height="34" rx="1.5" fill="#1a1a1a" />
+        <rect x="290" y="6" width="6" height="34" rx="2" fill="#181818" />
 
-        <!-- Green accent character line -->
-        <path
-          d="M 84 126 Q 250 114, 430 126"
-          stroke="url(#carGlowLine)"
-          stroke-width="1.5"
-          fill="none"
-        />
+        <!-- Green accent side character line -->
+        <path d="M 86 128 Q 260 115 445 128" stroke="url(#greenLine)" stroke-width="1.2" fill="none" />
 
-        <!-- Front wheel well -->
-        <ellipse cx="170" cy="168" rx="30" ry="30" fill="#0A0A0A" />
-        <!-- Front tire -->
-        <ellipse cx="170" cy="168" rx="24" ry="24" fill="#111" stroke="#2a2a2a" stroke-width="1" />
-        <ellipse cx="170" cy="168" rx="11" ry="11" fill="#1d1d1d" stroke="#333" stroke-width="0.5" />
+        <!-- Secondary accent line (lower) -->
+        <path d="M 96 148 Q 260 135 435 148" stroke="#39FF14" stroke-width="0.5" fill="none" opacity="0.12" />
 
-        <!-- Rear wheel well -->
-        <ellipse cx="352" cy="168" rx="30" ry="30" fill="#0A0A0A" />
-        <!-- Rear tire -->
-        <ellipse cx="352" cy="168" rx="24" ry="24" fill="#111" stroke="#2a2a2a" stroke-width="1" />
-        <ellipse cx="352" cy="168" rx="11" ry="11" fill="#1d1d1d" stroke="#333" stroke-width="0.5" />
+        <!-- Front wheel -->
+        <g filter="url(#wheelShadow)">
+          <ellipse cx="172" cy="173" rx="30" ry="30" fill="#070707" />
+          <ellipse cx="172" cy="173" rx="24" ry="24" fill="#111" stroke="#222" stroke-width="1" />
+          <!-- Wheel spokes -->
+          <circle cx="172" cy="173" r="11" fill="#181818" stroke="#2a2a2a" stroke-width="0.5" />
+          <line x1="172" y1="150" x2="172" y2="196" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="149" y1="173" x2="195" y2="173" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="156" y1="157" x2="188" y2="189" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="156" y1="189" x2="188" y2="157" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <circle cx="172" cy="173" r="4" fill="#222" />
+        </g>
 
-        <!-- Headlight -->
-        <path
-          d="M 64 116 L 80 104 L 83 128 L 68 130 Z"
-          fill="#39FF14"
-          opacity="0.2"
-        />
+        <!-- Rear wheel -->
+        <g filter="url(#wheelShadow)">
+          <ellipse cx="360" cy="173" rx="30" ry="30" fill="#070707" />
+          <ellipse cx="360" cy="173" rx="24" ry="24" fill="#111" stroke="#222" stroke-width="1" />
+          <circle cx="360" cy="173" r="11" fill="#181818" stroke="#2a2a2a" stroke-width="0.5" />
+          <line x1="360" y1="150" x2="360" y2="196" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="337" y1="173" x2="383" y2="173" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="344" y1="157" x2="376" y2="189" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <line x1="344" y1="189" x2="376" y2="157" stroke="#222" stroke-width="0.8" opacity="0.4" />
+          <circle cx="360" cy="173" r="4" fill="#222" />
+        </g>
 
-        <!-- Taillight -->
-        <rect x="440" y="116" width="12" height="18" rx="3" fill="#FF2020" opacity="0.2" />
+        <!-- LED Headlight -->
+        <path d="M 64 118 L 82 106 L 85 130 L 68 132 Z" fill="#39FF14" opacity="0.15" filter="url(#glow)" />
+        <path d="M 64 118 L 82 106 L 85 130 L 68 132 Z" fill="#39FF14" opacity="0.3" />
+
+        <!-- LED Taillight strip -->
+        <rect x="452" y="118" width="12" height="18" rx="3" fill="#FF2020" opacity="0.15" filter="url(#glow)" />
+        <rect x="452" y="118" width="12" height="18" rx="3" fill="#FF2020" opacity="0.25" />
       </svg>
 
-      <!-- Ground glow effect -->
       <div class="car-glow" aria-hidden="true"></div>
     </div>
 
-    <!-- ============================================================
-         SECTION DIVIDER
-         ============================================================ -->
-    <div style="margin: 10px 0 22px;"><div class="section-divider"></div></div>
+    <!-- ==================== DIVIDER ==================== -->
+    <div class="divider fade-up">
+      <span class="divider-line"></span>
+      <span class="divider-dot"></span>
+      <span class="divider-line"></span>
+    </div>
 
-    <!-- ============================================================
-         ACTION CARDS
-         ============================================================ -->
-    <section style="display:flex; flex-direction:column; gap:10px;">
+    <!-- ==================== ACTION CARDS ==================== -->
+    <section class="card-list" aria-label="Acciones principales">
 
       <!-- Card 1 — Solicitar Taxi (WhatsApp) -->
       <a
@@ -858,154 +734,60 @@
 
     </section>
 
-    <!-- ============================================================
-         QR — WHATSAPP SECTION
-         ============================================================ -->
-    <section class="qr-section reveal" style="margin-top:28px;" aria-label="Escanea el código QR de WhatsApp">
+    <!-- ==================== QR SECTION ==================== -->
+    <section class="qr-section reveal" aria-label="Escanea el código QR de WhatsApp">
       <div class="qr-visual">
-        <!-- QR code pattern (decorative SVG) -->
         <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
           <rect width="120" height="120" fill="white" />
-
-          <!-- Position markers (top-left, top-right, bottom-left) -->
-          <!-- TL -->
-          <rect x="6"  y="6"  width="24" height="24" rx="3" fill="#1a1a1a" />
+          <!-- Position markers -->
+          <rect x="6" y="6" width="24" height="24" rx="3" fill="#111" />
           <rect x="10" y="10" width="16" height="16" rx="2" fill="white" />
-          <rect x="14" y="14" width="8"  height="8"  rx="1" fill="#1a1a1a" />
-          <!-- TR -->
-          <rect x="90" y="6"  width="24" height="24" rx="3" fill="#1a1a1a" />
+          <rect x="14" y="14" width="8" height="8" rx="1" fill="#111" />
+          <rect x="90" y="6" width="24" height="24" rx="3" fill="#111" />
           <rect x="94" y="10" width="16" height="16" rx="2" fill="white" />
-          <rect x="98" y="14" width="8"  height="8"  rx="1" fill="#1a1a1a" />
-          <!-- BL -->
-          <rect x="6"  y="90" width="24" height="24" rx="3" fill="#1a1a1a" />
+          <rect x="98" y="14" width="8" height="8" rx="1" fill="#111" />
+          <rect x="6" y="90" width="24" height="24" rx="3" fill="#111" />
           <rect x="10" y="94" width="16" height="16" rx="2" fill="white" />
-          <rect x="14" y="98" width="8"  height="8"  rx="1" fill="#1a1a1a" />
-
-          <!-- Random-looking QR data modules (green tinted) -->
-          <rect x="38" y="6"  width="4" height="4" fill="#111" />
-          <rect x="46" y="6"  width="4" height="4" fill="#111" />
-          <rect x="54" y="6"  width="4" height="4" fill="#111" />
-          <rect x="62" y="6"  width="4" height="4" fill="#111" />
-          <rect x="70" y="6"  width="4" height="4" fill="#111" />
-          <rect x="78" y="6"  width="4" height="4" fill="#111" />
-
-          <rect x="38" y="14" width="4" height="4" fill="#111" />
-          <rect x="54" y="14" width="4" height="4" fill="#111" />
-          <rect x="62" y="14" width="4" height="4" fill="#111" />
-          <rect x="78" y="14" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="38" width="4" height="4" fill="#111" />
-          <rect x="14" y="38" width="4" height="4" fill="#111" />
-          <rect x="22" y="38" width="4" height="4" fill="#111" />
-          <rect x="38" y="38" width="4" height="4" fill="#111" />
-          <rect x="46" y="38" width="4" height="4" fill="#111" />
-          <rect x="54" y="38" width="4" height="4" fill="#39FF14" opacity="0.5" />
-          <rect x="62" y="38" width="4" height="4" fill="#111" />
-          <rect x="70" y="38" width="4" height="4" fill="#111" />
-          <rect x="78" y="38" width="4" height="4" fill="#111" />
-          <rect x="86" y="38" width="4" height="4" fill="#111" />
-          <rect x="94" y="38" width="4" height="4" fill="#111" />
-          <rect x="102" y="38" width="4" height="4" fill="#111" />
-          <rect x="110" y="38" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="46" width="4" height="4" fill="#111" />
-          <rect x="22" y="46" width="4" height="4" fill="#111" />
-          <rect x="30" y="46" width="4" height="4" fill="#111" />
-          <rect x="46" y="46" width="4" height="4" fill="#111" />
-          <rect x="70" y="46" width="4" height="4" fill="#111" />
-          <rect x="86" y="46" width="4" height="4" fill="#111" />
-          <rect x="102" y="46" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="54" width="4" height="4" fill="#111" />
-          <rect x="14" y="54" width="4" height="4" fill="#111" />
-          <rect x="30" y="54" width="4" height="4" fill="#111" />
-          <rect x="38" y="54" width="4" height="4" fill="#111" />
-          <rect x="54" y="54" width="4" height="4" fill="#111" />
-          <rect x="78" y="54" width="4" height="4" fill="#111" />
-          <rect x="86" y="54" width="4" height="4" fill="#111" />
-          <rect x="94" y="54" width="4" height="4" fill="#111" />
-          <rect x="110" y="54" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="62" width="4" height="4" fill="#111" />
-          <rect x="22" y="62" width="4" height="4" fill="#111" />
-          <rect x="30" y="62" width="4" height="4" fill="#111" />
-          <rect x="38" y="62" width="4" height="4" fill="#111" />
-          <rect x="54" y="62" width="4" height="4" fill="#111" />
-          <rect x="62" y="62" width="4" height="4" fill="#111" />
-          <rect x="70" y="62" width="4" height="4" fill="#111" />
-          <rect x="86" y="62" width="4" height="4" fill="#111" />
-          <rect x="94" y="62" width="4" height="4" fill="#111" />
-          <rect x="102" y="62" width="4" height="4" fill="#111" />
-          <rect x="110" y="62" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="70" width="4" height="4" fill="#111" />
-          <rect x="14" y="70" width="4" height="4" fill="#111" />
-          <rect x="22" y="70" width="4" height="4" fill="#111" />
-          <rect x="30" y="70" width="4" height="4" fill="#111" />
-          <rect x="46" y="70" width="4" height="4" fill="#111" />
-          <rect x="54" y="70" width="4" height="4" fill="#111" />
-          <rect x="70" y="70" width="4" height="4" fill="#111" />
-          <rect x="78" y="70" width="4" height="4" fill="#111" />
-          <rect x="86" y="70" width="4" height="4" fill="#111" />
-          <rect x="102" y="70" width="4" height="4" fill="#111" />
-
-          <rect x="30" y="78" width="4" height="4" fill="#111" />
-          <rect x="38" y="78" width="4" height="4" fill="#111" />
-          <rect x="46" y="78" width="4" height="4" fill="#111" />
-          <rect x="70" y="78" width="4" height="4" fill="#111" />
-          <rect x="78" y="78" width="4" height="4" fill="#111" />
-          <rect x="94" y="78" width="4" height="4" fill="#111" />
-          <rect x="110" y="78" width="4" height="4" fill="#111" />
-
-          <rect x="6"  y="86" width="4" height="4" fill="#111" />
-          <rect x="14" y="86" width="4" height="4" fill="#111" />
-          <rect x="30" y="86" width="4" height="4" fill="#111" />
-          <rect x="46" y="86" width="4" height="4" fill="#111" />
-          <rect x="54" y="86" width="4" height="4" fill="#111" />
-          <rect x="70" y="86" width="4" height="4" fill="#111" />
-
-          <!-- Bottom-right timing pattern -->
-          <rect x="38" y="94" width="4" height="4" fill="#111" />
-          <rect x="46" y="94" width="4" height="4" fill="#111" />
-          <rect x="62" y="94" width="4" height="4" fill="#111" />
-          <rect x="70" y="94" width="4" height="4" fill="#111" />
-          <rect x="78" y="94" width="4" height="4" fill="#111" />
-          <rect x="94" y="94" width="4" height="4" fill="#111" />
-          <rect x="102" y="94" width="4" height="4" fill="#111" />
-          <rect x="110" y="94" width="4" height="4" fill="#111" />
-
-          <rect x="38" y="102" width="4" height="4" fill="#111" />
-          <rect x="54" y="102" width="4" height="4" fill="#111" />
-          <rect x="70" y="102" width="4" height="4" fill="#111" />
-          <rect x="86" y="102" width="4" height="4" fill="#111" />
-          <rect x="102" y="102" width="4" height="4" fill="#111" />
-          <rect x="110" y="102" width="4" height="4" fill="#111" />
-
-          <rect x="38" y="110" width="4" height="4" fill="#111" />
-          <rect x="46" y="110" width="4" height="4" fill="#111" />
-          <rect x="54" y="110" width="4" height="4" fill="#111" />
-          <rect x="62" y="110" width="4" height="4" fill="#111" />
-          <rect x="70" y="110" width="4" height="4" fill="#111" />
-          <rect x="78" y="110" width="4" height="4" fill="#111" />
-          <rect x="86" y="110" width="4" height="4" fill="#111" />
-          <rect x="94" y="110" width="4" height="4" fill="#111" />
+          <rect x="14" y="98" width="8" height="8" rx="1" fill="#111" />
+          <!-- Data squares -->
+          <rect x="38" y="6" width="4" height="4" fill="#222" /><rect x="46" y="6" width="4" height="4" fill="#222" /><rect x="54" y="6" width="4" height="4" fill="#222" /><rect x="62" y="6" width="4" height="4" fill="#222" /><rect x="70" y="6" width="4" height="4" fill="#222" /><rect x="78" y="6" width="4" height="4" fill="#222" />
+          <rect x="38" y="14" width="4" height="4" fill="#222" /><rect x="54" y="14" width="4" height="4" fill="#222" /><rect x="62" y="14" width="4" height="4" fill="#222" /><rect x="78" y="14" width="4" height="4" fill="#222" />
+          <rect x="6" y="38" width="4" height="4" fill="#222" /><rect x="14" y="38" width="4" height="4" fill="#222" /><rect x="22" y="38" width="4" height="4" fill="#222" /><rect x="38" y="38" width="4" height="4" fill="#222" /><rect x="46" y="38" width="4" height="4" fill="#222" /><rect x="62" y="38" width="4" height="4" fill="#222" /><rect x="70" y="38" width="4" height="4" fill="#222" /><rect x="78" y="38" width="4" height="4" fill="#222" /><rect x="86" y="38" width="4" height="4" fill="#222" /><rect x="94" y="38" width="4" height="4" fill="#222" /><rect x="102" y="38" width="4" height="4" fill="#222" /><rect x="110" y="38" width="4" height="4" fill="#222" />
+          <rect x="6" y="46" width="4" height="4" fill="#222" /><rect x="22" y="46" width="4" height="4" fill="#222" /><rect x="30" y="46" width="4" height="4" fill="#222" /><rect x="46" y="46" width="4" height="4" fill="#222" /><rect x="54" y="46" width="4" height="4" fill="#222" /><rect x="62" y="46" width="4" height="4" fill="#39FF14" opacity="0.4" />
+          <rect x="70" y="46" width="4" height="4" fill="#222" /><rect x="86" y="46" width="4" height="4" fill="#222" /><rect x="102" y="46" width="4" height="4" fill="#222" />
+          <rect x="6" y="54" width="4" height="4" fill="#222" /><rect x="14" y="54" width="4" height="4" fill="#222" /><rect x="30" y="54" width="4" height="4" fill="#222" /><rect x="38" y="54" width="4" height="4" fill="#222" /><rect x="54" y="54" width="4" height="4" fill="#222" /><rect x="70" y="54" width="4" height="4" fill="#222" />
+          <rect x="78" y="54" width="4" height="4" fill="#222" /><rect x="86" y="54" width="4" height="4" fill="#222" /><rect x="94" y="54" width="4" height="4" fill="#222" /><rect x="110" y="54" width="4" height="4" fill="#222" />
+          <rect x="6" y="62" width="4" height="4" fill="#222" /><rect x="22" y="62" width="4" height="4" fill="#222" /><rect x="30" y="62" width="4" height="4" fill="#222" /><rect x="46" y="62" width="4" height="4" fill="#222" />
+          <rect x="62" y="62" width="4" height="4" fill="#222" /><rect x="70" y="62" width="4" height="4" fill="#222" /><rect x="86" y="62" width="4" height="4" fill="#222" />
+          <rect x="94" y="62" width="4" height="4" fill="#222" /><rect x="102" y="62" width="4" height="4" fill="#222" /><rect x="110" y="62" width="4" height="4" fill="#222" />
+          <rect x="6" y="70" width="4" height="4" fill="#222" /><rect x="14" y="70" width="4" height="4" fill="#222" /><rect x="22" y="70" width="4" height="4" fill="#222" />
+          <rect x="30" y="70" width="4" height="4" fill="#222" /><rect x="46" y="70" width="4" height="4" fill="#222" />
+          <rect x="54" y="70" width="4" height="4" fill="#222" /><rect x="70" y="70" width="4" height="4" fill="#222" /><rect x="78" y="70" width="4" height="4" fill="#222" />
+          <rect x="86" y="70" width="4" height="4" fill="#222" /><rect x="102" y="70" width="4" height="4" fill="#222" />
+          <rect x="30" y="78" width="4" height="4" fill="#222" /><rect x="38" y="78" width="4" height="4" fill="#222" />
+          <rect x="46" y="78" width="4" height="4" fill="#222" /><rect x="70" y="78" width="4" height="4" fill="#222" /><rect x="78" y="78" width="4" height="4" fill="#222" />
+          <rect x="94" y="78" width="4" height="4" fill="#222" /><rect x="110" y="78" width="4" height="4" fill="#222" />
+          <rect x="6" y="86" width="4" height="4" fill="#222" /><rect x="14" y="86" width="4" height="4" fill="#222" />
+          <rect x="30" y="86" width="4" height="4" fill="#222" /><rect x="46" y="86" width="4" height="4" fill="#222" /><rect x="54" y="86" width="4" height="4" fill="#222" />
+          <rect x="70" y="86" width="4" height="4" fill="#222" />
+          <rect x="38" y="94" width="4" height="4" fill="#222" /><rect x="46" y="94" width="4" height="4" fill="#222" /><rect x="62" y="94" width="4" height="4" fill="#222" />
+          <rect x="70" y="94" width="4" height="4" fill="#222" /><rect x="78" y="94" width="4" height="4" fill="#222" /><rect x="94" y="94" width="4" height="4" fill="#222" />
+          <rect x="102" y="94" width="4" height="4" fill="#222" /><rect x="110" y="94" width="4" height="4" fill="#222" />
+          <rect x="38" y="102" width="4" height="4" fill="#222" /><rect x="54" y="102" width="4" height="4" fill="#222" />
+          <rect x="70" y="102" width="4" height="4" fill="#222" /><rect x="86" y="102" width="4" height="4" fill="#222" /><rect x="102" y="102" width="4" height="4" fill="#222" />
+          <rect x="110" y="102" width="4" height="4" fill="#222" />
+          <rect x="38" y="110" width="4" height="4" fill="#222" /><rect x="46" y="110" width="4" height="4" fill="#222" />
+          <rect x="54" y="110" width="4" height="4" fill="#222" /><rect x="62" y="110" width="4" height="4" fill="#222" />
+          <rect x="70" y="110" width="4" height="4" fill="#222" /><rect x="78" y="110" width="4" height="4" fill="#222" />
+          <rect x="86" y="110" width="4" height="4" fill="#222" /><rect x="94" y="110" width="4" height="4" fill="#222" />
         </svg>
-
-        <!-- WhatsApp icon in center of QR -->
-        <div class="qr-whatsapp-center">
-          <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i>
-        </div>
+        <div class="qr-center-icon"><i class="fa-brands fa-whatsapp"></i></div>
       </div>
-
-      <p class="qr-text">
-        Escanea el código QR y <strong>escríbenos por WhatsApp</strong>
-      </p>
+      <p class="qr-text">Escanea el código QR y <strong>escríbenos por WhatsApp</strong></p>
     </section>
 
-    <!-- ============================================================
-         FOOTER / TRUST
-         ============================================================ -->
-    <footer style="margin-top:32px;">
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
       <div class="trust-grid reveal">
         <div class="trust-item">
           <span class="trust-icon"><i class="fa-solid fa-shield-halved"></i></span>
@@ -1023,26 +805,19 @@
           <div class="trust-desc">Tu seguridad es primero</div>
         </div>
       </div>
-
-      <div class="copyright" style="margin-top:24px;">
-        &copy; 2026 GoDrive Taxi. Todos los derechos reservados.
-      </div>
+      <div class="copyright">&copy; 2026 GoDrive Taxi. Todos los derechos reservados.</div>
     </footer>
 
   </main>
 
-  <!-- ============================================================
-       JAVASCRIPT
-       ============================================================ -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     (function () {
       'use strict';
 
-      // ------------------------------------------------------------
-      // 1. SCROLL REVEAL (Intersection Observer)
-      // ------------------------------------------------------------
+      // Scroll reveal
       const revealEls = document.querySelectorAll('.reveal');
-      if (revealEls.length > 0) {
+      if (revealEls.length) {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -1057,9 +832,7 @@
         revealEls.forEach((el) => observer.observe(el));
       }
 
-      // ------------------------------------------------------------
-      // 2. COMPARTIR UBICACIÓN (Geolocation API)
-      // ------------------------------------------------------------
+      // Compartir Ubicación con Geolocation
       const btnUbicacion = document.getElementById('btnUbicacion');
       if (btnUbicacion) {
         btnUbicacion.addEventListener('click', function () {
@@ -1067,30 +840,23 @@
             alert('La geolocalización no está disponible en este navegador.');
             return;
           }
-
           const originalHtml = this.innerHTML;
-          this.innerHTML =
-            '<span class="card-icon"><i class="fa-solid fa-spinner fa-spin"></i></span>' +
-            '<div style="flex:1; min-width:0;"><div class="card-title">Obteniendo ubicación...</div><div class="card-sub">Por favor espera</div></div>' +
+          const loadingHtml =
+            '<span class="card-icon"><i class="fa-solid fa-spinner fa-spin" style="color:var(--green)"></i></span>' +
+            '<div style="flex:1;min-width:0;"><div class="card-title">Obteniendo ubicación...</div><div class="card-sub">Por favor espera</div></div>' +
             '<span class="card-arrow"><i class="fa-solid fa-chevron-right"></i></span>';
+          this.innerHTML = loadingHtml;
 
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const { latitude, longitude } = position.coords;
-              const mapsUrl =
-                'https://www.google.com/maps?q=' + latitude + ',' + longitude;
-              const waMessage =
-                'https://wa.me/584161234567?text=' +
-                encodeURIComponent(
-                  'Hola GoDrive! Mi ubicación actual es: ' + mapsUrl
-                );
+              const mapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+              const waMessage = `https://wa.me/584161234567?text=${encodeURIComponent('Hola GoDrive! Mi ubicación actual es: ' + mapsUrl)}`;
               window.open(waMessage, '_blank');
               this.innerHTML = originalHtml;
             },
             () => {
-              alert(
-                'No pudimos obtener tu ubicación. Verifica los permisos de geolocalización.'
-              );
+              alert('No pudimos obtener tu ubicación. Verifica los permisos de geolocalización.');
               this.innerHTML = originalHtml;
             },
             { enableHighAccuracy: true, timeout: 10000 }
@@ -1098,18 +864,19 @@
         });
       }
 
-      // ------------------------------------------------------------
-      // 3. RESERVAR VIAJE (placeholder — muestra un aviso)
-      // ------------------------------------------------------------
+      // Reservar Viaje
       const btnReservar = document.getElementById('btnReservar');
       if (btnReservar) {
         btnReservar.addEventListener('click', function () {
-          alert(
-            '🔧 Función de reserva próximamente disponible.\n\nPor ahora, escríbenos por WhatsApp para programar tu viaje.'
-          );
+          alert('🔧 Función de reserva próximamente disponible.\n\nPor ahora, escríbenos por WhatsApp para programar tu viaje.');
         });
       }
 
+      // Smooth fade-in for logo
+      const logo = document.querySelector('.logo-img');
+      if (logo) {
+        logo.addEventListener('load', () => logo.classList.add('loaded'));
+      }
     })();
   </script>
 
