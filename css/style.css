@@ -1,20 +1,21 @@
 /* ============================================================
-   GoDrive Taxi — Modern Glass Style
+   GoDrive Taxi — Light Theme
    ============================================================ */
 
 :root {
-  --bg: #0A0A0A;
-  --glass: rgba(255, 255, 255, 0.02);
-  --glass-hover: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.04);
-  --glass-border-hover: rgba(255, 255, 255, 0.08);
-  --green: #39FF14;
-  --green-bg: rgba(57, 255, 20, 0.06);
-  --green-dim: #25D366;
+  --bg: #F5F5F0;
+  --bg-card: #FFFFFF;
+  --glass: rgba(0, 0, 0, 0.02);
+  --glass-hover: rgba(0, 0, 0, 0.04);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-border-hover: rgba(0, 0, 0, 0.08);
+  --green: #059669;
+  --green-bright: #39FF14;
+  --green-bg: rgba(5, 150, 105, 0.04);
   --whatsapp-bg: #25D366;
-  --text: #FFFFFF;
-  --text-muted: #7A7A7A;
-  --text-dim: #4A4A4A;
+  --text: #1A1A1A;
+  --text-muted: #888;
+  --text-dim: #B0B0B0;
   --radius-btn: 16px;
   --radius-avatar: 50%;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -40,49 +41,39 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
 
-/* ===================== NOISE ===================== */
-.noise {
-  position: fixed; inset: 0; z-index: 9999;
-  pointer-events: none; opacity: 0.015;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat; background-size: 180px 180px;
-}
-
-/* ===================== CITY LIGHTS ===================== */
-.city-lights {
+/* ===================== AMBIENT GLOW (light) ===================== */
+.ambient {
   position: fixed; inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
 }
 
-.city-lights .light {
+.ambient .glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.03;
+  filter: blur(100px);
 }
 
-.city-lights .light:nth-child(1) {
-  width: 350px; height: 350px;
-  background: #39FF14;
-  top: -10%; left: 5%;
+.ambient .glow:nth-child(1) {
+  width: 400px; height: 400px;
+  background: rgba(5, 150, 105, 0.04);
+  top: -10%; left: -10%;
 }
 
-.city-lights .light:nth-child(2) {
-  width: 220px; height: 220px;
-  background: #00BFA5;
-  top: 25%; right: -10%;
-  opacity: 0.02;
+.ambient .glow:nth-child(2) {
+  width: 300px; height: 300px;
+  background: rgba(5, 150, 105, 0.03);
+  bottom: -5%; right: -10%;
 }
 
-.city-lights .light:nth-child(3) {
-  width: 280px; height: 280px;
-  background: #39FF14;
-  bottom: 15%; left: -15%;
-  opacity: 0.015;
+.ambient .glow:nth-child(3) {
+  width: 200px; height: 200px;
+  background: rgba(212, 175, 55, 0.02);
+  top: 40%; left: 50%;
+  filter: blur(120px);
 }
 
 /* ===================== APP ===================== */
@@ -96,6 +87,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
   position: relative;
   z-index: 1;
+  background: #FFFFFF;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.02);
 }
 
 @media (min-width: 768px) {
@@ -105,10 +98,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
     padding-bottom: 40px;
   }
   .app {
-    background: var(--bg);
-    border: 1px solid rgba(255,255,255,0.025);
-    border-radius: 32px;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    border-radius: 36px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
     min-height: auto;
     padding: 48px 36px 44px;
   }
@@ -116,14 +107,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 /* ===================== ENTRANCE ===================== */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
   opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 0.55s var(--ease) forwards;
+  transform: translateY(14px);
+  animation: fadeUp 0.5s var(--ease) forwards;
 }
 
 .fade-in:nth-child(1) { animation-delay: 0.04s; }
@@ -150,16 +141,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   overflow: hidden;
   margin-bottom: 14px;
   position: relative;
-  box-shadow:
-    0 0 0 2px rgba(57, 255, 20, 0.08),
-    0 0 50px rgba(57, 255, 20, 0.04);
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.06);
   transition: box-shadow 0.4s var(--ease);
 }
 
 .avatar:hover {
-  box-shadow:
-    0 0 0 2px rgba(57, 255, 20, 0.12),
-    0 0 60px rgba(57, 255, 20, 0.06);
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.12);
 }
 
 .avatar img {
@@ -174,6 +161,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   letter-spacing: -0.03em;
   line-height: 1.2;
   margin-bottom: 10px;
+  color: #1A1A1A;
 }
 
 .badges {
@@ -189,9 +177,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   gap: 4px;
   padding: 5px 11px;
   border-radius: 100px;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  color: var(--text-dim);
+  color: var(--text-muted);
   background: var(--glass);
   border: 1px solid var(--glass-border);
   letter-spacing: 0.02em;
@@ -212,7 +200,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   margin-bottom: 24px;
 }
 
-/* Base button style (glass) */
 .btn-link {
   display: flex;
   align-items: center;
@@ -227,61 +214,39 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   text-decoration: none;
   color: var(--text);
   transition:
-    background 0.4s var(--ease),
-    border-color 0.4s var(--ease),
-    transform 0.4s var(--ease),
-    box-shadow 0.4s var(--ease);
+    background 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
   text-align: left;
   position: relative;
-  overflow: hidden;
-}
-
-/* Glass glow overlay on hover */
-.btn-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 40%, rgba(57, 255, 20, 0.03) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-  pointer-events: none;
 }
 
 .btn-link:hover {
   background: var(--glass-hover);
   border-color: var(--glass-border-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.btn-link:hover::before {
-  opacity: 1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
 }
 
 .btn-link:active {
   transform: translateY(0) scale(0.99);
 }
 
-/* WhatsApp button — filled green, standout */
+/* WhatsApp — filled green */
 .btn-whatsapp {
   background: linear-gradient(135deg, #25D366 0%, #1DA851 100%);
   border-color: transparent;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.15);
-}
-
-.btn-whatsapp::before {
-  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
-  background-size: 200% 100%;
-  opacity: 0;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.12);
 }
 
 .btn-whatsapp:hover {
   background: linear-gradient(135deg, #2EE07A 0%, #25D366 100%);
   border-color: transparent;
-  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.25);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.2);
   transform: translateY(-2px);
 }
 
@@ -289,31 +254,30 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   transform: translateY(0);
 }
 
-/* Icon — sin fondo */
+/* Icon */
 .btn-icon {
   flex-shrink: 0;
   width: 22px;
   display: flex;
   justify-content: center;
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  transition: color 0.35s var(--ease), transform 0.35s var(--ease);
+  font-size: 1.15rem;
+  color: var(--green);
+  transition: transform 0.35s var(--ease);
 }
 
 .btn-link:hover .btn-icon {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .btn-whatsapp .btn-icon {
   color: #fff;
 }
 
-.btn-link:hover .btn-whatsapp .btn-icon {
-  color: #fff;
-}
-
 .btn-icon.instagram { color: #E1306C; }
 .btn-icon.tiktok { color: #FF0050; }
+
+.btn-icon.location { color: var(--green); }
+.btn-icon.calendar { color: var(--green); }
 
 .btn-text {
   flex: 1;
@@ -344,16 +308,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .btn-arrow {
   flex-shrink: 0;
-  color: #333;
+  color: #ccc;
   font-size: 0.7rem;
-  transition: transform 0.35s var(--ease), color 0.35s var(--ease), opacity 0.35s var(--ease);
-  opacity: 0.4;
+  transition: transform 0.35s var(--ease), color 0.35s var(--ease);
 }
 
 .btn-link:hover .btn-arrow {
-  transform: translateX(5px);
+  transform: translateX(4px);
   color: var(--green);
-  opacity: 1;
 }
 
 .btn-whatsapp .btn-arrow {
@@ -362,20 +324,18 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .btn-whatsapp:hover .btn-arrow {
   color: #fff;
-  opacity: 1;
 }
 
-/* ===================== QR SECTION ===================== */
+/* ===================== QR ===================== */
 .qr-section {
   width: 100%;
   padding: 18px 16px 16px;
   border-radius: var(--radius-btn);
-  border: 1px solid rgba(57, 255, 20, 0.06);
+  border: 1px solid var(--glass-border);
   text-align: center;
   margin-bottom: 24px;
   position: relative;
   background: var(--glass);
-  backdrop-filter: blur(12px);
 }
 
 .qr-section::before {
@@ -383,14 +343,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  border: 1px solid rgba(57, 255, 20, 0.06);
+  border: 1px solid rgba(5, 150, 105, 0.08);
   animation: borderPulse 3s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes borderPulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.5; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
 }
 
 .qr-visual {
@@ -401,6 +361,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   overflow: hidden;
   background: #fff;
   display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
 }
 
 .qr-center-icon {
@@ -436,8 +397,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .trust-row {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
@@ -446,32 +407,21 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
   gap: 5px;
   font-size: 0.6rem;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
   font-weight: 500;
-  padding: 6px 12px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 100px;
-  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
-}
-
-.trust-item:hover {
-  border-color: rgba(57, 255, 20, 0.06);
-  background: var(--glass-hover);
 }
 
 .trust-item i {
   color: var(--green);
-  opacity: 0.3;
+  opacity: 0.4;
   font-size: 0.55rem;
 }
 
 .copyright {
   font-size: 0.58rem;
-  color: #333;
+  color: #ccc;
   letter-spacing: 0.04em;
-  margin-top: 14px;
 }
 
 /* ===================== RESPONSIVE ===================== */
@@ -489,6 +439,5 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; }
-  .city-lights .light { animation: none !important; }
   .qr-section::before { animation: none !important; }
 }
