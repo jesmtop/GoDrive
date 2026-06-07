@@ -48,7 +48,7 @@
 
   // Background slideshow — crossfade every 3s
   (function slideshow() {
-    const images = [
+    var images = [
       'imagenfondo/1.jpg',
       'imagenfondo/2.jpg',
       'imagenfondo/3.jpg',
@@ -60,21 +60,16 @@
     // Preload all images
     images.forEach(function (src) { var p = new Image(); p.src = src; });
 
-    var imgs = document.querySelectorAll('.slideshow-img');
-    if (!imgs.length) return;
-    var a = imgs[0], b = imgs[1];
-    var idx = 1;
+    var track = document.getElementById('slideshowTrack');
+    if (!track) return;
+    var idx = 0;
+
+    // Set first image immediately
+    track.style.backgroundImage = 'url(' + images[0] + ')';
 
     setInterval(function () {
-      var nextSrc = images[idx % images.length];
-      var inactive = a.classList.contains('active') ? b : a;
-      var active = a.classList.contains('active') ? a : b;
-
-      inactive.src = nextSrc;
-      active.classList.remove('active');
-      inactive.classList.add('active');
-
-      idx++;
+      idx = (idx + 1) % images.length;
+      track.style.backgroundImage = 'url(' + images[idx] + ')';
     }, 3000);
   })();
 
