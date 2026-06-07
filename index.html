@@ -2,43 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoDrive Taxi — El Arte de Viajar con Distinción | Carúpano</title>
-  <meta name="description" content="Servicio de taxi ejecutivo en Carúpano, Sucre. Traslados premium, conductores certificados y confort absoluto 24/7. Cotiza tu viaje ahora." />
-  <meta name="keywords" content="taxi ejecutivo Carúpano, taxi premium Sucre, traslados ejecutivos, GoDrive, transporte VIP" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GoDrive Taxi — Viaja cómodo, seguro y siempre a tiempo</title>
+  <meta name="description" content="Solicita tu taxi en Carúpano, Sucre. Servicio 24/7, conductores verificados, viajes seguros." />
+  <meta name="keywords" content="taxi Carúpano, taxi Sucre, GoDrive, servicio de taxi, viajes seguros" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://jesmtop.github.io/GoDrive/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jesmtop.github.io/GoDrive/" />
-  <meta property="og:title" content="GoDrive Taxi — El Arte de Viajar con Distinción" />
-  <meta property="og:description" content="Traslados ejecutivos premium en Carúpano. Conductores certificados, flota climatizada, puntualidad garantizada." />
+  <meta property="og:title" content="GoDrive Taxi — Tu Destino, Nuestra Prioridad" />
+  <meta property="og:description" content="Viaja cómodo, seguro y siempre a tiempo. Taxi en Carúpano, Sucre." />
   <meta property="og:site_name" content="GoDrive Taxi" />
   <meta property="og:locale" content="es_ES" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="GoDrive Taxi — El Arte de Viajar con Distinción" />
-  <meta name="twitter:description" content="Traslados ejecutivos premium en Carúpano. Conductores certificados, puntualidad garantizada." />
+  <meta name="twitter:title" content="GoDrive Taxi" />
+  <meta name="twitter:description" content="Viaja cómodo, seguro y siempre a tiempo." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
-  <!-- Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "GoDrive Taxi",
-    "description": "Servicio de taxi ejecutivo premium en Carúpano, Sucre.",
+    "description": "Servicio de taxi en Carúpano, Sucre.",
     "url": "https://jesmtop.github.io/GoDrive/",
     "telephone": "+58-416-123-4567",
-    "priceRange": "$$",
     "areaServed": { "@type": "City", "name": "Carúpano" },
     "address": {
       "@type": "PostalAddress",
@@ -49,8 +43,7 @@
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+      "opens": "00:00", "closes": "23:59"
     },
     "sameAs": ["https://instagram.com/godrive.taxi","https://tiktok.com/@godrive.taxi"]
   }
@@ -58,313 +51,159 @@
 </head>
 <body>
 
-  <!-- Noise overlay -->
+  <!-- Noise -->
   <div class="noise" aria-hidden="true"></div>
 
-  <!-- ==================== NAVBAR ==================== -->
-  <nav class="navbar" role="navigation" aria-label="Navegación principal">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
+  <!-- City lights bokeh -->
+  <div class="city-lights" aria-hidden="true">
+    <span class="light"></span>
+    <span class="light"></span>
+    <span class="light"></span>
+    <span class="light"></span>
+    <span class="light"></span>
+  </div>
+
+  <!-- ==================== APP ==================== -->
+  <main class="app" role="main">
+
+    <!-- ==================== PROFILE ==================== -->
+    <header class="profile fade-in">
+      <div class="avatar">
         <img
           src="logo/logogodrive.png"
           alt="GoDrive Taxi"
-          style="opacity:0; transition: opacity 0.4s ease;"
-          width="120"
-          height="38"
+          width="88"
+          height="88"
           loading="eager"
         />
-        <span>GoDrive</span>
+      </div>
+
+      <h1 class="brand-name">GoDrive</h1>
+      <p class="brand-tag">Taxi Ejecutivo</p>
+
+      <div class="badges">
+        <span class="badge"><i class="fa-solid fa-location-dot"></i> Carúpano, Sucre</span>
+        <span class="badge"><i class="fa-regular fa-clock"></i> Servicio 24/7</span>
+      </div>
+    </header>
+
+    <!-- ==================== BUTTONS ==================== -->
+    <section class="btn-list" aria-label="Acciones">
+
+      <!-- Solicitar Taxi (WhatsApp) -->
+      <a
+        href="https://wa.me/584161234567?text=Hola%20GoDrive!%20Necesito%20un%20taxi"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-link fade-in"
+        aria-label="Solicitar taxi por WhatsApp"
+      >
+        <span class="btn-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></span>
+        <span class="btn-text">
+          <span class="btn-title">Solicitar Taxi</span>
+          <span class="btn-sub">Pide tu viaje por WhatsApp</span>
+        </span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#confianza">Confianza</a></li>
-      </ul>
+      <!-- Reservar Viaje -->
+      <button class="btn-link fade-in" id="btnReservar" aria-label="Reservar viaje con anticipación" style="text-align:left;">
+        <span class="btn-icon calendar"><i class="fa-regular fa-calendar-check"></i></span>
+        <span class="btn-text">
+          <span class="btn-title">Reservar Viaje</span>
+          <span class="btn-sub">Programa tu traslado con anticipación</span>
+        </span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+      </button>
 
-      <div class="nav-cta">
-        <a href="https://wa.me/584161234567" target="_blank" rel="noopener" class="btn-nav">
-          Viajar Ahora
-        </a>
-        <div class="hamburger" role="button" aria-label="Abrir menú" tabindex="0">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <!-- Compartir Ubicación -->
+      <button class="btn-link fade-in" id="btnUbicacion" aria-label="Compartir ubicación en tiempo real" style="text-align:left;">
+        <span class="btn-icon location"><i class="fa-solid fa-location-crosshairs"></i></span>
+        <span class="btn-text">
+          <span class="btn-title">Compartir Ubicación</span>
+          <span class="btn-sub">Envíanos tu ubicación en tiempo real</span>
+        </span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+      </button>
+
+      <!-- Instagram -->
+      <a
+        href="https://instagram.com/godrive.taxi"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-link fade-in"
+        aria-label="Instagram de GoDrive"
+      >
+        <span class="btn-icon instagram"><i class="fa-brands fa-instagram"></i></span>
+        <span class="btn-text">
+          <span class="btn-title">Instagram</span>
+          <span class="btn-sub">Síguenos y obtén descuentos</span>
+        </span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+      </a>
+
+      <!-- TikTok -->
+      <a
+        href="https://tiktok.com/@godrive.taxi"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-link fade-in"
+        aria-label="TikTok de GoDrive"
+      >
+        <span class="btn-icon tiktok"><i class="fa-brands fa-tiktok"></i></span>
+        <span class="btn-text">
+          <span class="btn-title">TikTok</span>
+          <span class="btn-sub">Mira nuestros videos y el día a día</span>
+        </span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+      </a>
+
+    </section>
+
+    <!-- ==================== QR SECTION ==================== -->
+    <section class="qr-section fade-in" aria-label="Escanea el código QR de WhatsApp">
+      <div class="qr-visual">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="120" fill="white" />
+          <rect x="6" y="6" width="24" height="24" rx="3" fill="#111" />
+          <rect x="10" y="10" width="16" height="16" rx="2" fill="white" />
+          <rect x="14" y="14" width="8" height="8" rx="1" fill="#111" />
+          <rect x="90" y="6" width="24" height="24" rx="3" fill="#111" />
+          <rect x="94" y="10" width="16" height="16" rx="2" fill="white" />
+          <rect x="98" y="14" width="8" height="8" rx="1" fill="#111" />
+          <rect x="6" y="90" width="24" height="24" rx="3" fill="#111" />
+          <rect x="10" y="94" width="16" height="16" rx="2" fill="white" />
+          <rect x="14" y="98" width="8" height="8" rx="1" fill="#111" />
+          <rect x="38" y="6" width="4" height="4" fill="#222" /><rect x="46" y="6" width="4" height="4" fill="#222" /><rect x="54" y="6" width="4" height="4" fill="#222" /><rect x="62" y="6" width="4" height="4" fill="#222" /><rect x="70" y="6" width="4" height="4" fill="#222" /><rect x="78" y="6" width="4" height="4" fill="#222" />
+          <rect x="38" y="14" width="4" height="4" fill="#222" /><rect x="54" y="14" width="4" height="4" fill="#222" /><rect x="62" y="14" width="4" height="4" fill="#222" /><rect x="78" y="14" width="4" height="4" fill="#222" />
+          <rect x="6" y="38" width="4" height="4" fill="#222" /><rect x="14" y="38" width="4" height="4" fill="#222" /><rect x="22" y="38" width="4" height="4" fill="#222" /><rect x="38" y="38" width="4" height="4" fill="#222" /><rect x="46" y="38" width="4" height="4" fill="#222" /><rect x="62" y="38" width="4" height="4" fill="#222" /><rect x="70" y="38" width="4" height="4" fill="#222" /><rect x="78" y="38" width="4" height="4" fill="#222" /><rect x="86" y="38" width="4" height="4" fill="#222" /><rect x="94" y="38" width="4" height="4" fill="#222" /><rect x="102" y="38" width="4" height="4" fill="#222" /><rect x="110" y="38" width="4" height="4" fill="#222" />
+          <rect x="6" y="46" width="4" height="4" fill="#222" /><rect x="22" y="46" width="4" height="4" fill="#222" /><rect x="30" y="46" width="4" height="4" fill="#222" /><rect x="46" y="46" width="4" height="4" fill="#222" /><rect x="62" y="46" width="4" height="4" fill="#39FF14" opacity="0.4" /><rect x="70" y="46" width="4" height="4" fill="#222" /><rect x="86" y="46" width="4" height="4" fill="#222" /><rect x="102" y="46" width="4" height="4" fill="#222" />
+          <rect x="6" y="54" width="4" height="4" fill="#222" /><rect x="14" y="54" width="4" height="4" fill="#222" /><rect x="30" y="54" width="4" height="4" fill="#222" /><rect x="38" y="54" width="4" height="4" fill="#222" /><rect x="54" y="54" width="4" height="4" fill="#222" /><rect x="70" y="54" width="4" height="4" fill="#222" /><rect x="78" y="54" width="4" height="4" fill="#222" /><rect x="86" y="54" width="4" height="4" fill="#222" /><rect x="94" y="54" width="4" height="4" fill="#222" /><rect x="110" y="54" width="4" height="4" fill="#222" />
+          <rect x="6" y="62" width="4" height="4" fill="#222" /><rect x="22" y="62" width="4" height="4" fill="#222" /><rect x="30" y="62" width="4" height="4" fill="#222" /><rect x="46" y="62" width="4" height="4" fill="#222" /><rect x="62" y="62" width="4" height="4" fill="#222" /><rect x="70" y="62" width="4" height="4" fill="#222" /><rect x="86" y="62" width="4" height="4" fill="#222" /><rect x="94" y="62" width="4" height="4" fill="#222" /><rect x="102" y="62" width="4" height="4" fill="#222" /><rect x="110" y="62" width="4" height="4" fill="#222" />
+          <rect x="6" y="70" width="4" height="4" fill="#222" /><rect x="14" y="70" width="4" height="4" fill="#222" /><rect x="22" y="70" width="4" height="4" fill="#222" /><rect x="30" y="70" width="4" height="4" fill="#222" /><rect x="46" y="70" width="4" height="4" fill="#222" /><rect x="54" y="70" width="4" height="4" fill="#222" /><rect x="70" y="70" width="4" height="4" fill="#222" /><rect x="78" y="70" width="4" height="4" fill="#222" /><rect x="86" y="70" width="4" height="4" fill="#222" /><rect x="102" y="70" width="4" height="4" fill="#222" />
+          <rect x="30" y="78" width="4" height="4" fill="#222" /><rect x="38" y="78" width="4" height="4" fill="#222" /><rect x="46" y="78" width="4" height="4" fill="#222" /><rect x="70" y="78" width="4" height="4" fill="#222" /><rect x="78" y="78" width="4" height="4" fill="#222" /><rect x="94" y="78" width="4" height="4" fill="#222" /><rect x="110" y="78" width="4" height="4" fill="#222" />
+          <rect x="6" y="86" width="4" height="4" fill="#222" /><rect x="14" y="86" width="4" height="4" fill="#222" /><rect x="30" y="86" width="4" height="4" fill="#222" /><rect x="46" y="86" width="4" height="4" fill="#222" /><rect x="54" y="86" width="4" height="4" fill="#222" /><rect x="70" y="86" width="4" height="4" fill="#222" />
+          <rect x="38" y="94" width="4" height="4" fill="#222" /><rect x="46" y="94" width="4" height="4" fill="#222" /><rect x="62" y="94" width="4" height="4" fill="#222" /><rect x="70" y="94" width="4" height="4" fill="#222" /><rect x="78" y="94" width="4" height="4" fill="#222" /><rect x="94" y="94" width="4" height="4" fill="#222" /><rect x="102" y="94" width="4" height="4" fill="#222" /><rect x="110" y="94" width="4" height="4" fill="#222" />
+          <rect x="38" y="102" width="4" height="4" fill="#222" /><rect x="54" y="102" width="4" height="4" fill="#222" /><rect x="70" y="102" width="4" height="4" fill="#222" /><rect x="86" y="102" width="4" height="4" fill="#222" /><rect x="102" y="102" width="4" height="4" fill="#222" /><rect x="110" y="102" width="4" height="4" fill="#222" />
+          <rect x="38" y="110" width="4" height="4" fill="#222" /><rect x="46" y="110" width="4" height="4" fill="#222" /><rect x="54" y="110" width="4" height="4" fill="#222" /><rect x="62" y="110" width="4" height="4" fill="#222" /><rect x="70" y="110" width="4" height="4" fill="#222" /><rect x="78" y="110" width="4" height="4" fill="#222" /><rect x="86" y="110" width="4" height="4" fill="#222" /><rect x="94" y="110" width="4" height="4" fill="#222" />
+        </svg>
+        <div class="qr-center-icon"><i class="fa-brands fa-whatsapp"></i></div>
       </div>
-    </div>
-  </nav>
+      <p class="qr-text">Escanea el código QR y <strong>escríbenos por WhatsApp</strong></p>
+    </section>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#confianza">Confianza</a>
-    <a href="https://wa.me/584161234567" target="_blank" rel="noopener" class="btn-nav" style="margin-top:20px;">
-      Viajar Ahora
-    </a>
-  </div>
-
-  <!-- ==================== HERO ==================== -->
-  <section class="hero" id="inicio">
-    <div class="container">
-      <div class="hero-grid">
-        <!-- Left content -->
-        <div class="hero-content">
-          <div class="hero-badge animate-in stagger-1">
-            <i class="fa-solid fa-location-dot"></i> Carúpano, Sucre
-            <span style="width:3px;height:3px;background:var(--text-dim);border-radius:50%;display:inline-block;margin:0 4px;"></span>
-            <i class="fa-regular fa-clock"></i> 24/7
-          </div>
-
-          <h1 class="hero-title animate-in stagger-2">
-            El Arte de<br />
-            <span class="accent">Viajar con Distinción</span>
-          </h1>
-
-          <p class="hero-sub animate-in stagger-3">
-            Disfruta de traslados ejecutivos, conductores certificados
-            y confort absoluto las 24 horas del día.
-          </p>
-
-          <!-- Glass form -->
-          <div class="glass-form animate-in stagger-4">
-            <h3 class="form-title">Cotiza tu Viaje</h3>
-            <p class="form-sub">Completa los datos y te enviamos el precio al instante</p>
-
-            <div class="form-group">
-              <label for="origen"><i class="fa-solid fa-circle-dot"></i> Punto de Origen</label>
-              <input
-                type="text"
-                id="origen"
-                class="form-input"
-                placeholder="Ej: Centro de Carúpano"
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="destino"><i class="fa-solid fa-location-dot"></i> Punto de Destino</label>
-              <input
-                type="text"
-                id="destino"
-                class="form-input"
-                placeholder="Ej: Aeropuerto de Carúpano"
-                autocomplete="off"
-              />
-            </div>
-
-            <button class="btn-primary" type="button">
-              Cotizar Viaje
-            </button>
-          </div>
-        </div>
-
-        <!-- Right visual (abstract geometric, no car) -->
-        <div class="hero-visual animate-in stagger-3" aria-hidden="true">
-          <div class="hero-ring hero-ring-1"></div>
-          <div class="hero-ring hero-ring-2"></div>
-          <div class="hero-ring hero-ring-3"></div>
-
-          <div class="hero-diamond">
-            <i class="fa-regular fa-compass"></i>
-          </div>
-
-          <div class="hero-dot hero-dot-1"></div>
-          <div class="hero-dot hero-dot-2"></div>
-          <div class="hero-dot hero-dot-3"></div>
-
-          <div class="hero-gem hero-gem-1"></div>
-          <div class="hero-gem hero-gem-2"></div>
-
-          <!-- Route path SVG -->
-          <svg class="hero-path" viewBox="0 0 180 120" fill="none" stroke-linecap="round">
-            <path
-              d="M 10 100 Q 50 30 90 60 T 170 20"
-              stroke="rgba(5,150,105,0.08)"
-              stroke-width="1"
-              stroke-dasharray="3 4"
-              fill="none"
-            />
-            <circle cx="10" cy="100" r="3" fill="rgba(5,150,105,0.15)" />
-            <circle cx="170" cy="20" r="3" fill="rgba(5,150,105,0.15)" />
-          </svg>
-        </div>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="trust-row">
+        <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> Viajes Seguros</span>
+        <span class="trust-item"><i class="fa-regular fa-clock"></i> Atención Rápida</span>
+        <span class="trust-item"><i class="fa-solid fa-circle-check"></i> Confianza Total</span>
       </div>
-    </div>
-  </section>
+      <p class="copyright">&copy; 2026 GoDrive Taxi. Todos los derechos reservados.</p>
+    </footer>
 
-  <!-- ==================== BENTO GRID / SOCIAL HUB ==================== -->
-  <section class="bento-section" id="servicios">
-    <div class="container">
-      <div class="bento-header">
-        <div class="section-label animate-in">Conectividad</div>
-        <h2 class="section-title animate-in stagger-1">
-          Asistencia <span style="color:var(--green);">Inmediata</span>
-        </h2>
-        <p class="section-sub animate-in stagger-2">
-          Estamos donde necesites. Un toque te separa de la experiencia GoDrive.
-        </p>
-      </div>
+  </main>
 
-      <div class="bento-grid">
-        <!-- WhatsApp — card grande -->
-        <div class="bento-card bento-whatsapp animate-in stagger-1">
-          <div class="bento-icon"><i class="fa-brands fa-whatsapp"></i></div>
-          <h3 class="bento-title">Asistencia Concierge</h3>
-          <p class="bento-desc">
-            Chatea en un toque con nuestro equipo. Reservas, consultas
-            y soporte en tiempo real, directo por WhatsApp.
-          </p>
-          <a href="https://wa.me/584161234567" target="_blank" rel="noopener" class="btn-whatsapp">
-            <i class="fa-brands fa-whatsapp"></i> Escribir ahora
-          </a>
-        </div>
-
-        <!-- Instagram -->
-        <div class="bento-card bento-instagram animate-in stagger-2">
-          <div class="bento-icon"><i class="fa-brands fa-instagram"></i></div>
-          <h3 class="bento-title">@godrive.taxi</h3>
-          <p class="bento-desc">Vive la experiencia a bordo</p>
-          <div class="insta-grid" aria-hidden="true">
-            <div style="background:#1a3a2a;"></div>
-            <div style="background:#3a1a2a;"></div>
-            <div style="background:#2a1a3a;"></div>
-            <div style="background:#1a2a3a;"></div>
-            <div style="background:#3a2a1a;"></div>
-            <div style="background:#2a3a1a;"></div>
-            <div style="background:#1a1a3a;"></div>
-            <div style="background:#3a1a1a;"></div>
-            <div style="background:#1a3a3a;"></div>
-          </div>
-        </div>
-
-        <!-- TikTok -->
-        <div class="bento-card bento-tiktok animate-in stagger-3">
-          <div class="bento-icon"><i class="fa-brands fa-tiktok"></i></div>
-          <h3 class="bento-title">@godrive.taxi</h3>
-          <p class="bento-desc">Cápsulas de la experiencia premium</p>
-          <div class="tiktok-mockup" aria-hidden="true">
-            <div style="background: linear-gradient(180deg, #1a2a3a 0%, #0a1a2a 100%);"></div>
-            <div style="background: linear-gradient(180deg, #3a1a2a 0%, #1a0a1a 100%);"></div>
-            <div style="background: linear-gradient(180deg, #1a3a2a 0%, #0a1a1a 100%);"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== TRUST SECTION ==================== -->
-  <section class="trust-section" id="confianza">
-    <div class="container">
-      <div class="trust-header">
-        <div class="section-label animate-in">Por Qué Elegirnos</div>
-        <h2 class="section-title animate-in stagger-1">
-          Confianza que <span style="color:var(--green);">Te Acompaña</span>
-        </h2>
-        <p class="section-sub animate-in stagger-2">
-          Cada viaje está respaldado por estándares que garantizan
-          tu seguridad y comodidad.
-        </p>
-      </div>
-
-      <div class="trust-grid">
-        <div class="trust-card animate-in stagger-1">
-          <div class="trust-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-          <h3 class="trust-card-title">Monitoreo Satelital</h3>
-          <p class="trust-card-desc">
-            Seguridad activa en cada kilómetro recorrido. Tu viaje
-            siempre supervisado.
-          </p>
-        </div>
-
-        <div class="trust-card animate-in stagger-2">
-          <div class="trust-card-icon"><i class="fa-solid fa-car-side"></i></div>
-          <h3 class="trust-card-title">Flota Ejecutiva</h3>
-          <p class="trust-card-desc">
-            Vehículos sanitizados, modernos y climatizados para tu
-            confort absoluto.
-          </p>
-        </div>
-
-        <div class="trust-card animate-in stagger-3">
-          <div class="trust-card-icon"><i class="fa-regular fa-clock"></i></div>
-          <h3 class="trust-card-title">Puntualidad Garantizada</h3>
-          <p class="trust-card-desc">
-            Tu tiempo es nuestro activo más valioso. Llegamos a tiempo,
-            siempre.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Brand -->
-        <div class="footer-brand">
-          <img
-            src="logo/logogodrive.png"
-            alt="GoDrive Taxi"
-            width="120"
-            height="38"
-          />
-          <p>
-            Traslados ejecutivos premium en Carúpano, Sucre.
-            Viaja con distinción, llega con estilo.
-          </p>
-          <div class="footer-social">
-            <a href="https://wa.me/584161234567" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="https://instagram.com/godrive.taxi" target="_blank" rel="noopener" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://tiktok.com/@godrive.taxi" target="_blank" rel="noopener" aria-label="TikTok">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div>
-          <h4>Contacto</h4>
-          <div class="footer-links">
-            <a href="https://wa.me/584161234567" target="_blank" rel="noopener">
-              <i class="fa-brands fa-whatsapp"></i> +58 416-123-4567
-            </a>
-            <a href="mailto:info@godrivetaxi.com">
-              <i class="fa-regular fa-envelope"></i> info@godrivetaxi.com
-            </a>
-            <span style="display:flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text-muted);">
-              <i class="fa-solid fa-location-dot" style="color:var(--green);opacity:0.6;font-size:0.7rem;"></i>
-              Carúpano, Sucre, Venezuela
-            </span>
-          </div>
-        </div>
-
-        <!-- Navigation -->
-        <div>
-          <h4>Enlaces</h4>
-          <div class="footer-links">
-            <a href="#inicio"><i class="fa-regular fa-circle"></i> Inicio</a>
-            <a href="#servicios"><i class="fa-regular fa-circle"></i> Servicios</a>
-            <a href="#confianza"><i class="fa-regular fa-circle"></i> Confianza</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="footer-bottom">
-        <p>&copy; 2026 GoDrive Taxi. Todos los derechos reservados.</p>
-        <a href="https://jesmtop.github.io/GoDrive/">jesmtop.github.io/GoDrive</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
   <script src="js/main.js"></script>
 
 </body>
