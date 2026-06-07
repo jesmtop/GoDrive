@@ -76,64 +76,48 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   bottom: -10%; left: -15%;
 }
 
-/* ===================== BLURRED HERO BACKGROUND ===================== */
-.bg-hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 55vh;
+/* ===================== BACKGROUND SLIDESHOW ===================== */
+.bg-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
   overflow: hidden;
-  z-index: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 3px;
   pointer-events: none;
 }
 
-.bg-hero img {
+.slideshow-track {
+  position: absolute;
+  inset: 0;
+}
+
+.slideshow-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(24px);
-  transform: scale(1.08);
-  opacity: 0.9;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
-/* Gradient overlay: images visible at top → solid white by midpoint */
-.bg-hero::after {
-  content: '';
+.slideshow-img.active {
+  opacity: 1;
+}
+
+/* Gradient overlay at bottom: fades image into body background */
+.slideshow-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0.88) 0%,
-    rgba(255,255,255,0.35) 18%,
-    var(--app) 48%
+    transparent 30%,
+    var(--bg) 72%
   );
   pointer-events: none;
 }
 
-@media (min-width: 768px) {
-  .bg-hero {
-    border-radius: inherit;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .bg-hero img { filter: blur(8px); }
-}
-
-.app-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  .slideshow-img { transition-duration: 0.01ms !important; }
 }
 
 /* ===================== APP ===================== */
@@ -147,7 +131,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: center;
   position: relative;
   z-index: 1;
-  background: var(--app);
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.85) 25%,
+    var(--app) 38%
+  );
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.02);
 }
 
@@ -158,6 +147,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
     padding-bottom: 40px;
   }
   .app {
+    background: var(--app);
     border-radius: 40px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
     min-height: auto;

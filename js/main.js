@@ -46,4 +46,36 @@
     });
   }
 
+  // Background slideshow — crossfade every 3s
+  (function slideshow() {
+    const images = [
+      'imagenfondo/1.jpg',
+      'imagenfondo/2.jpg',
+      'imagenfondo/3.jpg',
+      'imagenfondo/4.jpg',
+      'imagenfondo/5.jpg',
+      'imagenfondo/6.jpg',
+    ];
+
+    // Preload all images
+    images.forEach(function (src) { var p = new Image(); p.src = src; });
+
+    var imgs = document.querySelectorAll('.slideshow-img');
+    if (!imgs.length) return;
+    var a = imgs[0], b = imgs[1];
+    var idx = 1;
+
+    setInterval(function () {
+      var nextSrc = images[idx % images.length];
+      var inactive = a.classList.contains('active') ? b : a;
+      var active = a.classList.contains('active') ? a : b;
+
+      inactive.src = nextSrc;
+      active.classList.remove('active');
+      inactive.classList.add('active');
+
+      idx++;
+    }, 3000);
+  })();
+
 })();
